@@ -1,10 +1,13 @@
 // pass in question and options to pick from App
 
-export default () => {
+export default ({ question: { question, answer, options } }) => {
+   
 	return (
 		<div className="question">
-			<h2></h2>
-			<div className="question__options"></div>
+			<h2>{question}?</h2>
+			<div className="question__options">
+
+         </div>
 		</div>
 	);
 };

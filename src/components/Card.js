@@ -1,3 +1,3 @@
-export default () => {
-	return <div className="card">Card</div>;
+export default (props) => {
+	return <div className="card">{props.children}</div>;
 };
