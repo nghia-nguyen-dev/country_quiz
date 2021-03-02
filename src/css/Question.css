@@ -3,34 +3,42 @@ h2 {
 	font-size: 24px;
 	line-height: 36px;
 	color: #2f527b;
-   margin-bottom: 32px;
+	margin-bottom: 32px;
 }
 
 .question__option {
-   cursor: pointer;
+	cursor: pointer;
 	background: #ffffff;
 	border: 2px solid rgba(96, 102, 208, 0.7);
 	box-sizing: border-box;
 	border-radius: 12px;
-   height: 56px;
-   padding: 10px 18px;
+	height: 56px;
+	padding: 10px 18px;
 
-   margin-bottom: 20px;
-   display: flex;
-   align-items: center;
+	margin-bottom: 20px;
+	display: flex;
+	align-items: center;
 }
 
 .question__option:hover {
-   color: #FFFFFF;
-   background: #F9A826;
-   border: 2px solid #F9A826;
+	color: #ffffff;
+	background: #f9a826;
+	border: 2px solid #f9a826;
 }
 
 .question__option__letter {
-   margin-right: 44px;
+	margin-right: 44px;
 }
 
 .question__btn {
-   display: block;
-   margin-left: auto;
+	display: block;
+	margin-left: auto;
+   background: #f9a826;
+   color: #ffffff;
+   border: none;
 }
+
+.question__btn:disabled {
+   background-color: rgb(187, 187, 187);
+}
+

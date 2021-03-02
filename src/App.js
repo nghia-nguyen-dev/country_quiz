@@ -1,7 +1,6 @@
 import Card from "./components/Card";
 import Question from "./components/Question";
 
-// pass in a random question
 const listOfQuestions = [
 	{
 		question: "Hanoi is the capital of",
@@ -11,6 +10,7 @@ const listOfQuestions = [
 ];
 
 export default () => {
+
 	return (
 		<div className="app">
 			<div>

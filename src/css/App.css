@@ -21,5 +21,17 @@ h1 {
 	/* identical to box height */
 	text-transform: uppercase;
 
-   margin-bottom: 8px;
+	margin-bottom: 16px;
 }
+
+button {
+	border-radius: 12px;
+	height: 56px;
+	width: 116px;
+	font-family: Poppins;
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 27px;
+	cursor: pointer;
+}
+
