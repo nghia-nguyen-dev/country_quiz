@@ -1,5 +1,3 @@
 export default () => {
-   return (
-      <div>Card</div>
-   )
-}
+	return <div className="card">Card</div>;
+};

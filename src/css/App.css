@@ -1,11 +1,25 @@
-body {
+.app {
 	font-family: "Poppins";
 	font-weight: 400;
-}
-
-.app {
 	height: 100vh;
 	background-image: url("../assets/images/background.png");
 	background-size: cover;
 	background-position: center;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+h1 {
+	font-family: Poppins;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 36px;
+	color: #f2f2f2;
+
+	/* identical to box height */
+	text-transform: uppercase;
+
+   margin-bottom: 8px;
 }
