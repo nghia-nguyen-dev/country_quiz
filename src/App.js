@@ -1,5 +1,7 @@
+import Card from './components/Card';
+
 export default () => {
    return (
-      <div>App</div>
+      <div className="app">App</div>
    )
 }
