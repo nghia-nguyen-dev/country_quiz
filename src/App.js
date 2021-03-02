@@ -6,7 +6,7 @@ const listOfQuestions = [
 	{
 		question: "Hanoi is the capital of",
 		answer: "Vietnam",
-		options: ["Vietnam", "Japan", "China"],
+		options: ["Vietnam", "Japan", "China", "Taiwan"],
 	},
 ];
 
