@@ -29,3 +29,8 @@ h2 {
 .question__option__letter {
    margin-right: 44px;
 }
+
+.question__btn {
+   display: block;
+   margin-left: auto;
+}
