@@ -3,6 +3,11 @@ import Card from "./components/Card";
 import Question from "./components/Question";
 import countryCodes from "./data/countryCodes.json";
 
+const config = {
+	options: 4,
+	questions: 5,
+}
+
 const questions = [
 	function (countries) {
 		const random = getRandomItem(countries);
@@ -72,20 +77,20 @@ const generateQuestion = (countries) => {
 
 // ----------------------------------------------------------------- APP
 const App = () => {
-	const [counter, setCounter] = useState(5); // Number of questions
+	const [counter, setCounter] = useState(config.questions); // Number of questions
 	const [score, setScore] = useState(0); // Correct answers
 	const [currentQuestion, setCurrentQuestion] = useState(null);
 	const [nextQuestion, setNextQuestion] = useState(null);
 
 	useEffect(() => {
-		fetch(buildQueryStr(getRandomCodes(4)))
+		fetch(buildQueryStr(getRandomCodes(config.options)))
 			.then((res) => res.json())
 			.then((data) => generateQuestion(data))
 			.then((question) => setCurrentQuestion(question));
 	}, []);
 
 	const fetchNextData = () => {
-		fetch(buildQueryStr(getRandomCodes(4)))
+		fetch(buildQueryStr(getRandomCodes(config.options)))
 			.then((res) => res.json())
 			.then((data) => generateQuestion(data))
 			.then((question) => setNextQuestion(question));
