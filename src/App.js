@@ -72,15 +72,15 @@ const generateQuestion = (countries) => {
 
 // ----------------------------------------------------------------- APP
 const App = () => {
-	const [currentQuestion, setCurrentQuestion] = useState("");
 	const [countries, setCountries] = useState([]);
-	const [selected, setSelected] = useState("");
+	const [tally, setTally] = useState(0);
+	const [questions, setQuestions] = useState(5);
 
 	useEffect(() => {
 		fetch(buildQueryStr(getRandomCodes(4)))
 			.then((res) => res.json())
 			.then((data) => setCountries(data));
-	}, []);
+	}, [questions]);
 
 	const renderContent = () => {
 		return !countries.length ? (
@@ -89,7 +89,13 @@ const App = () => {
 			<div>
 				<h1>Country Quiz</h1>
 				<Card>
-					<Question question={generateQuestion(countries)} />
+					<Question
+						question={generateQuestion(countries)}
+						tally={tally}
+						setTally={setTally}
+                  questions={questions}
+                  setQuestions={setQuestions}
+					/>
 				</Card>
 			</div>
 		);
