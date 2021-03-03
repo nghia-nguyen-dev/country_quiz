@@ -3,17 +3,23 @@ import Card from "./components/Card";
 import Question from "./components/Question";
 import countryCodes from "./data/countryCodes.json";
 
-const listOfQuestions = [
-	{
-		question: "Hanoi is the capital of",
-		answer: "Vietnam",
-		options: ["Vietnam", "Japan", "China", "Taiwan"],
+const typesOfQuestion = [
+	function (countries) {
+		const randomCountry = getRandomItem(countries);
+
+		return {
+			q: `${randomCountry.capital} is the capital of`,
+			a: randomCountry.name,
+			options: countries.map((country) => country.name),
+		};
+	},
+	function (country) {
+		return {
+			q: `People in ${country.name}, speak`,
+			a: country.languages[0].name,
+		};
 	},
 ];
-
-const generateQuestion = () => {
-	return;
-};
 
 const getRandomNum = (ceiling) => {
 	return Math.floor(Math.random() * ceiling);
@@ -23,12 +29,11 @@ const getRandomItem = (array) => {
 	return array[getRandomNum(array.length)];
 };
 
-// Build list of random country codes
-
-const listOfRandomCodes = (numberOftimes) => {
+// Build an array of random country codes
+const getRandomCodes = (number) => {
 	const temp = [];
 
-	for (let i = 1; i <= numberOftimes; i++) {
+	for (let i = 1; i <= number; i++) {
 		let randomCode;
 		do {
 			randomCode = getRandomItem(countryCodes);
@@ -39,13 +44,31 @@ const listOfRandomCodes = (numberOftimes) => {
 	return temp;
 };
 
+// Append country codes to base url
+const buildQueryStr = (listOfCodes) => {
+	let baseURL = `https://restcountries.eu/rest/v2/alpha?codes=`;
+	return listOfCodes.reduce((accumulator, current) => {
+		return accumulator + `${current};`;
+	}, baseURL);
+};
 
-// Fetch data with those 10 codes
+// Returns a Q&A object
+const generateQuestion = (country) => {
+	// Get random question
+	return getRandomItem(typesOfQuestion)(country);
+};
 
-export default () => {
-	const [currentQuestion, setCurrentQuestion] = useState(
-		getRandomItem(listOfQuestions)
-	);
+// ---------------------------------------------------------------------------------- APP
+const App = () => {
+	const [currentQuestion, setCurrentQuestion] = useState("");
+	const [countries, setCountries] = useState([]);
+	const [selected, setSelected] = useState("");
+
+	useEffct(() => {
+		fetch(buildQueryStr(getRandomCodes(4)))
+			.then((res) => res.json())
+			.then((data) => setCountries(data));
+	});
 
 	return (
 		<div className="app">
@@ -58,3 +81,5 @@ export default () => {
 		</div>
 	);
 };
+
+export default App;
