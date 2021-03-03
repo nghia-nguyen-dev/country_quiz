@@ -17,10 +17,7 @@ h1 {
 	font-weight: bold;
 	font-size: 36px;
 	color: #f2f2f2;
-
-	/* identical to box height */
 	text-transform: uppercase;
-
 	margin-bottom: 16px;
 }
 
@@ -33,5 +30,14 @@ button {
 	font-size: 18px;
 	line-height: 27px;
 	cursor: pointer;
+}
+
+.loading-text {
+   color: #f2f2f2;
+   font-weight: bold;
+	font-size: 24px;
+	line-height: 36px;
+	text-transform: uppercase;
+   letter-spacing: 2px;
 }
 

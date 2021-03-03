@@ -7,7 +7,7 @@ const questions = [
 	function (countries) {
 		const random = getRandomItem(countries);
 		return {
-         subject: 'capital',
+			subject: "capital",
 			q: `${random.capital} is the capital of`,
 			a: random.name,
 			options: countries.map((country) => country.name),
@@ -16,7 +16,7 @@ const questions = [
 	function (countries) {
 		const random = getRandomItem(countries);
 		return {
-         subject: 'language',
+			subject: "language",
 			q: `${random.languages[0].nativeName} is the native language of`,
 			a: random.name,
 			options: countries.map((country) => country.name),
@@ -25,11 +25,11 @@ const questions = [
 	function (countries) {
 		const random = getRandomItem(countries);
 		return {
-         subject: 'flag',
+			subject: "flag",
 			q: `This is the flag of`,
 			a: random.name,
 			options: countries.map((country) => country.name),
-         imgSrc: random.flag,
+			imgSrc: random.flag,
 		};
 	},
 ];
@@ -84,7 +84,7 @@ const App = () => {
 
 	const renderContent = () => {
 		return !countries.length ? (
-			<div>Loading...</div>
+			<div className="loading-text">Loading...</div>
 		) : (
 			<div>
 				<h1>Country Quiz</h1>
