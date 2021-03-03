@@ -1,6 +1,6 @@
 const letters = ["A", "B", "C", "D"];
 
-export default ({ question: { question, answer, options } }) => {
+export default ({ question: { q, a, options } }) => {
 	const listOfOptions = options.map((option, index) => {
 		return (
 			<li className="question__option">
@@ -14,7 +14,7 @@ export default ({ question: { question, answer, options } }) => {
 
 	return (
 		<div className="question">
-			<h2>{question} ?</h2>
+			<h2>{q} ?</h2>
 			<ul className="question__options">{listOfOptions}</ul>
 			<button className="question__btn">Next</button>
 		</div>

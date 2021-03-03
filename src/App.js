@@ -55,32 +55,35 @@ const buildQueryStr = (listOfCodes) => {
 
 // Returns a Q&A object
 const generateQuestion = (countries) => {
-	// Get random question
 	return getRandomItem(questions)(countries);
 };
 
-//  APP
+// ----------------------------------------------------------------- APP
 const App = () => {
 	const [currentQuestion, setCurrentQuestion] = useState("");
 	const [countries, setCountries] = useState([]);
 	const [selected, setSelected] = useState("");
 
-	useEffct(() => {
+	useEffect(() => {
 		fetch(buildQueryStr(getRandomCodes(4)))
 			.then((res) => res.json())
 			.then((data) => setCountries(data));
-	});
+	}, []);
 
-	return (
-		<div className="app">
+	const renderContent = () => {
+		return !countries.length ? (
+			<div>Loading...</div>
+		) : (
 			<div>
 				<h1>Country Quiz</h1>
 				<Card>
-					<Question question={currentQuestion} />
+					<Question question={generateQuestion(countries)} />
 				</Card>
 			</div>
-		</div>
-	);
+		);
+	};
+
+	return <div className="app">{renderContent()}</div>;
 };
 
 export default App;
