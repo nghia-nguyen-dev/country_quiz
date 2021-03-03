@@ -72,15 +72,20 @@ const generateQuestion = (countries) => {
 
 // ----------------------------------------------------------------- APP
 const App = () => {
-	const [countries, setCountries] = useState([]);
 	const [tally, setTally] = useState(0);
+	const [countries, setCountries] = useState([]);
 	const [questions, setQuestions] = useState(5);
 
 	useEffect(() => {
+      console.log(`effect`)
 		fetch(buildQueryStr(getRandomCodes(4)))
 			.then((res) => res.json())
 			.then((data) => setCountries(data));
 	}, [questions]);
+
+	const renderedResults = () => {
+		return <div>{`You got ${tally} correct out of 5`}</div>;
+	};
 
 	const renderContent = () => {
 		return !countries.length ? (
@@ -89,13 +94,17 @@ const App = () => {
 			<div>
 				<h1>Country Quiz</h1>
 				<Card>
-					<Question
-						question={generateQuestion(countries)}
-						tally={tally}
-						setTally={setTally}
-                  questions={questions}
-                  setQuestions={setQuestions}
-					/>
+					{questions === 0 ? (
+						renderedResults()
+					) : (
+						<Question
+							question={generateQuestion(countries)}
+							tally={tally}
+							setTally={setTally}
+							questions={questions}
+							setQuestions={setQuestions}
+						/>
+					)}
 				</Card>
 			</div>
 		);
