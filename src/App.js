@@ -15,9 +15,9 @@ const questions = [
 	function (countries) {
 		const random = getRandomItem(countries);
 		return {
-			q: `People in ${random.name}, speak`,
-			a: random.languages[0].name,
-			options: countries.map((country) => country.languages[0].name),
+			q: `${random.languages[0].nativeName} is the native language of`,
+			a: random.name,
+			options: countries.map((country) => country.name),
 		};
 	},
 ];
