@@ -22,6 +22,16 @@ const questions = [
 			options: countries.map((country) => country.name),
 		};
 	},
+	function (countries) {
+		const random = getRandomItem(countries);
+		return {
+         subject: 'flag',
+			q: `This is the flag of`,
+			a: random.name,
+			options: countries.map((country) => country.name),
+         imgSrc: random.flag,
+		};
+	},
 ];
 
 const getRandomNum = (ceiling) => {
@@ -49,7 +59,7 @@ const getRandomCodes = (number) => {
 
 // Append country codes to base url
 const buildQueryStr = (listOfCodes) => {
-	let baseURL = `https://restcountries.eu/rest/v2/alpha?codes=`;
+	const baseURL = `https://restcountries.eu/rest/v2/alpha?codes=`;
 	return listOfCodes.reduce((accumulator, current) => {
 		return accumulator + `${current};`;
 	}, baseURL);

@@ -45,3 +45,8 @@ h2 {
 .question__btn:disabled {
 	background-color: rgb(187, 187, 187);
 }
+
+.question__flag {
+   border: 1px solid black;
+   width: 36%;
+}
