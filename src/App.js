@@ -3,20 +3,21 @@ import Card from "./components/Card";
 import Question from "./components/Question";
 import countryCodes from "./data/countryCodes.json";
 
-const typesOfQuestion = [
+const questions = [
 	function (countries) {
-		const randomCountry = getRandomItem(countries);
-
+		const random = getRandomItem(countries);
 		return {
-			q: `${randomCountry.capital} is the capital of`,
-			a: randomCountry.name,
+			q: `${random.capital} is the capital of`,
+			a: random.name,
 			options: countries.map((country) => country.name),
 		};
 	},
-	function (country) {
+	function (countries) {
+		const random = getRandomItem(countries);
 		return {
-			q: `People in ${country.name}, speak`,
-			a: country.languages[0].name,
+			q: `People in ${random.name}, speak`,
+			a: random.languages[0].name,
+			options: countries.map((country) => country.languages[0].name),
 		};
 	},
 ];
@@ -53,12 +54,12 @@ const buildQueryStr = (listOfCodes) => {
 };
 
 // Returns a Q&A object
-const generateQuestion = (country) => {
+const generateQuestion = (countries) => {
 	// Get random question
-	return getRandomItem(typesOfQuestion)(country);
+	return getRandomItem(questions)(countries);
 };
 
-// ---------------------------------------------------------------------------------- APP
+//  APP
 const App = () => {
 	const [currentQuestion, setCurrentQuestion] = useState("");
 	const [countries, setCountries] = useState([]);
