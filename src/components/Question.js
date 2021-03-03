@@ -1,20 +1,26 @@
 const letters = ["A", "B", "C", "D"];
 
 export default ({
-	question: { q, a, options, subject, imgSrc },
-	tally,
-	setTally,
-   questions,
-   setQuestions
+	currentQuestion: { q, a, options, subject, imgSrc },
+	score,
+	setScore,
+	setCurrentQuestion,
+	counter,
+	setCounter,
+	nextQuestion,
+	fetchNextData,
 }) => {
 	const listOfOptions = options.map((option, index) => {
 		return (
 			<li
 				onClick={() => {
+					fetchNextData();
+
 					if (option === a) {
-						setTally(tally + 1);
+						console.log(`correct!`)
+						setScore(score + 1);
 					}
-					setQuestions(questions - 1);
+					setCounter(counter - 1);
 				}}
 				className="question__item"
 			>
@@ -31,7 +37,14 @@ export default ({
 			) : null}
 			<h2>{q} ?</h2>
 			<ul className="question__items">{listOfOptions}</ul>
-			<button className="question__btn">Next</button>
+			<button
+				onClick={() => {
+					setCurrentQuestion(nextQuestion);
+				}}
+				className="question__btn"
+			>
+				Next
+			</button>
 		</div>
 	);
 };

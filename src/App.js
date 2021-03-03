@@ -72,37 +72,48 @@ const generateQuestion = (countries) => {
 
 // ----------------------------------------------------------------- APP
 const App = () => {
-	const [tally, setTally] = useState(0);
-	const [countries, setCountries] = useState([]);
-	const [questions, setQuestions] = useState(5);
+	const [score, setScore] = useState(0);
+	const [currentQuestion, setCurrentQuestion] = useState(null);
+	const [nextQuestion, setNextQuestion] = useState(null);
+	const [counter, setCounter] = useState(5);
 
 	useEffect(() => {
-      console.log(`effect`)
 		fetch(buildQueryStr(getRandomCodes(4)))
 			.then((res) => res.json())
-			.then((data) => setCountries(data));
-	}, [questions]);
+			.then((data) => generateQuestion(data))
+			.then((question) => setCurrentQuestion(question));
+	}, []);
+
+	const fetchNextData = () => {
+		fetch(buildQueryStr(getRandomCodes(4)))
+			.then((res) => res.json())
+			.then((data) => generateQuestion(data))
+			.then((question) => setNextQuestion(question));
+	};
 
 	const renderedResults = () => {
-		return <div>{`You got ${tally} correct out of 5`}</div>;
+		return <div>{`You got ${score} correct out of 5`}</div>;
 	};
 
 	const renderContent = () => {
-		return !countries.length ? (
+		return currentQuestion === null ? (
 			<div className="loading-text">Loading...</div>
 		) : (
 			<div>
 				<h1>Country Quiz</h1>
 				<Card>
-					{questions === 0 ? (
+					{counter === 0 ? (
 						renderedResults()
 					) : (
 						<Question
-							question={generateQuestion(countries)}
-							tally={tally}
-							setTally={setTally}
-							questions={questions}
-							setQuestions={setQuestions}
+							currentQuestion={currentQuestion}
+							setCurrentQuestion={setCurrentQuestion}
+							score={score}
+							setScore={setScore}
+							counter={counter}
+							setCounter={setCounter}
+							nextQuestion={nextQuestion}
+							fetchNextData={fetchNextData}
 						/>
 					)}
 				</Card>
