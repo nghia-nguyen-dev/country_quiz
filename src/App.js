@@ -72,10 +72,10 @@ const generateQuestion = (countries) => {
 
 // ----------------------------------------------------------------- APP
 const App = () => {
-	const [score, setScore] = useState(0);
+	const [counter, setCounter] = useState(5); // Number of questions
+	const [score, setScore] = useState(0); // Correct answers
 	const [currentQuestion, setCurrentQuestion] = useState(null);
 	const [nextQuestion, setNextQuestion] = useState(null);
-	const [counter, setCounter] = useState(5);
 
 	useEffect(() => {
 		fetch(buildQueryStr(getRandomCodes(4)))

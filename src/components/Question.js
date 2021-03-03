@@ -17,10 +17,15 @@ export default ({
 					fetchNextData();
 
 					if (option === a) {
-						console.log(`correct!`)
+						// Add green bg color
 						setScore(score + 1);
+					} else {
+						// Add red bg color
 					}
+
 					setCounter(counter - 1);
+
+					// Enable next button
 				}}
 				className="question__item"
 			>
