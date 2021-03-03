@@ -7,6 +7,7 @@ const questions = [
 	function (countries) {
 		const random = getRandomItem(countries);
 		return {
+         subject: 'capital',
 			q: `${random.capital} is the capital of`,
 			a: random.name,
 			options: countries.map((country) => country.name),
@@ -15,6 +16,7 @@ const questions = [
 	function (countries) {
 		const random = getRandomItem(countries);
 		return {
+         subject: 'language',
 			q: `${random.languages[0].nativeName} is the native language of`,
 			a: random.name,
 			options: countries.map((country) => country.name),
