@@ -114,13 +114,10 @@ export default App = () => {
 							renderedResults()
 						) : (
 							<Question
-								currentQuestion={currentQuestion}
-								setCurrentQuestion={setCurrentQuestion}
 								score={score}
 								setScore={setScore}
 								counter={counter}
 								setCounter={setCounter}
-								nextQuestion={nextQuestion}
 								fetchNextData={fetchNextData}
 							/>
 						)}
