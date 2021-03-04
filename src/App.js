@@ -3,7 +3,7 @@ import Card from "./components/Card";
 import Question from "./components/Question";
 import countryCodes from "./data/countryCodes.json";
 import Button from "components/Button";
-import LoadingScreen from "components/LoadingScreen"
+import LoadingScreen from "components/LoadingScreen";
 
 const config = {
 	options: 4,
@@ -78,7 +78,7 @@ const generateQuestion = (countries) => {
 };
 
 // ----------------------------------------------------------------- APP
-const App = () => {
+export default App = () => {
 	const [counter, setCounter] = useState(config.questions); // Number of questions
 	const [score, setScore] = useState(0); // Correct answers
 	const [currentQuestion, setCurrentQuestion] = useState(null);
@@ -106,7 +106,7 @@ const App = () => {
 		return currentQuestion === null ? (
 			<LoadingScreen />
 		) : (
-			<div>
+			<React.Fragment>
 				<h1>Country Quiz</h1>
 				<Card>
 					{counter === 0 ? (
@@ -129,11 +129,9 @@ const App = () => {
 						setCurrentQuestion={setCurrentQuestion}
 					/>
 				</Card>
-			</div>
+			</React.Fragment>
 		);
 	};
 
 	return <div className="app">{renderContent()}</div>;
 };
-
-export default App;
