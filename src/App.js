@@ -102,36 +102,36 @@ export default App = () => {
 		return <div>{`You got ${score} correct out of 5`}</div>;
 	};
 
-	const renderContent = () => {
-		return currentQuestion === null ? (
-			<LoadingScreen />
-		) : (
-			<React.Fragment>
-				<h1>Country Quiz</h1>
-				<Card>
-					{counter === 0 ? (
-						renderedResults()
-					) : (
-						<Question
-							currentQuestion={currentQuestion}
-							setCurrentQuestion={setCurrentQuestion}
-							score={score}
-							setScore={setScore}
-							counter={counter}
-							setCounter={setCounter}
+	return (
+		<div className="app">
+			{currentQuestion === null ? (
+				<LoadingScreen />
+			) : (
+				<React.Fragment>
+					<h1>Country Quiz</h1>
+					<Card>
+						{counter === 0 ? (
+							renderedResults()
+						) : (
+							<Question
+								currentQuestion={currentQuestion}
+								setCurrentQuestion={setCurrentQuestion}
+								score={score}
+								setScore={setScore}
+								counter={counter}
+								setCounter={setCounter}
+								nextQuestion={nextQuestion}
+								fetchNextData={fetchNextData}
+							/>
+						)}
+						<Button
+							text="Next"
 							nextQuestion={nextQuestion}
-							fetchNextData={fetchNextData}
+							setCurrentQuestion={setCurrentQuestion}
 						/>
-					)}
-					<Button
-						text="Next"
-						nextQuestion={nextQuestion}
-						setCurrentQuestion={setCurrentQuestion}
-					/>
-				</Card>
-			</React.Fragment>
-		);
-	};
-
-	return <div className="app">{renderContent()}</div>;
+					</Card>
+				</React.Fragment>
+			)}
+		</div>
+	);
 };
