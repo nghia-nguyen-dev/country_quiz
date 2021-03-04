@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Card from "./components/Card";
-import Question from "./components/Question";
+import Quiz from "./components/Quiz";
 import countryCodes from "./data/countryCodes.json";
 import Button from "components/Button";
 import LoadingScreen from "components/LoadingScreen";
@@ -108,9 +108,9 @@ const App = () => {
 					<h1>Country Quiz</h1>
 					<Card>
 						{counter === 0 ? (
-							<Results score={score}/>
+							<Results score={score} />
 						) : (
-							<Question
+							<Quiz
 								currentQuestion={currentQuestion}
 								score={score}
 								setScore={setScore}

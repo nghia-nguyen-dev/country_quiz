@@ -1,4 +1,4 @@
-const Questions = ({
+const Quiz = ({
 	currentQuestion: { q, a, options, subject, imgSrc },
 	score,
 	setScore,
@@ -43,4 +43,4 @@ const Questions = ({
 	);
 };
 
-export default Questions;
+export default Quiz;

@@ -11,4 +11,4 @@ const Button = ({ nextQuestion, setCurrentQuestion, text }) => {
 	);
 };
 
-export default Button
+export default Button;
