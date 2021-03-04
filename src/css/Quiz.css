@@ -6,7 +6,7 @@ h2 {
 	margin-bottom: 32px;
 }
 
-.question__item {
+.quiz__item {
 	cursor: pointer;
 	background: #ffffff;
 	border: 2px solid rgba(96, 102, 208, 0.7);
@@ -19,21 +19,21 @@ h2 {
 	align-items: center;
 }
 
-.question__item:last-child {
+.quiz__item:last-child {
 	margin-bottom: 0;
 }
 
-.question__item:hover {
+.quiz__item:hover {
 	color: #ffffff;
 	background: #f9a826;
 	border: 2px solid #f9a826;
 }
 
-.question__item__letter {
+.quiz__item__letter {
 	margin-right: 44px;
 }
 
-.question__btn {
+.quiz__btn {
 	display: block;
 	margin-left: auto;
 	margin-top: 60px;
@@ -42,11 +42,18 @@ h2 {
 	border: none;
 }
 
-.question__btn:disabled {
+.quiz__btn:disabled {
 	background-color: rgb(187, 187, 187);
 }
 
-.question__flag {
+.quiz__flag {
    border: 1px solid black;
    width: 36%;
+}
+
+.quiz__item--correct {
+	background-color: green;
+}
+.quiz__item--wrong {
+	background-color: red;
 }

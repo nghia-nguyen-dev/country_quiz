@@ -4,7 +4,7 @@ const Button = ({ nextQuestion, setCurrentQuestion, text }) => {
 			onClick={() => {
 				setCurrentQuestion(nextQuestion);
 			}}
-			className="question__btn"
+			className="quiz__btn"
 		>
 			{text}
 		</button>
