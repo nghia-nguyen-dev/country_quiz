@@ -1,12 +1,13 @@
-const Button = ({ nextQuestion, setCurrentQuestion, text }) => {
+const Button = ({ nextQuestion, setCurrentQuestion, setReveal }) => {
 	return (
 		<button
 			onClick={() => {
 				setCurrentQuestion(nextQuestion);
+				setReveal(false);
 			}}
 			className="quiz__btn"
 		>
-			{text}
+			Next
 		</button>
 	);
 };

@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+const letters = ["A", "B", "C", "D"];
 
 const Quiz = ({
 	currentQuestion: { q, a, options, subject, imgSrc },
@@ -7,26 +8,53 @@ const Quiz = ({
 	counter,
 	setCounter,
 	fetchNextData,
+	reveal,
+	setReveal,
 }) => {
-	console.log(`Quiz`);
 	const [selected, setSelected] = useState("");
-	const listOfOptions = options.map((option, index) => {
-		const letters = ["A", "B", "C", "D"];
+
+	const before = options.map((option, index) => {
 		return (
 			<li
 				onClick={(e) => {
+					setReveal(true);
+					setSelected(option);
 					fetchNextData();
-
 					if (option === a) {
-						// Add green bg color
+						console.log(`correct`);
 						setScore(score + 1);
-					} else {
-						// Add red bg color
 					}
-
 					setCounter(counter - 1);
 				}}
 				className={`quiz__item`}
+			>
+				<span className="quiz__item__letter">{letters[index]}</span>
+				<p>{option}</p>
+			</li>
+		);
+	});
+
+	const after = options.map((option, index) => {
+		if (option === selected) {
+			return (
+				<li
+					className={`quiz__item ${
+						option === a
+							? "quiz__item--correct"
+							: "quiz__item--wrong"
+					}`}
+				>
+					<span className="quiz__item__letter">{letters[index]}</span>
+					<p>{option}</p>
+				</li>
+			);
+		}
+
+		return (
+			<li
+				className={`quiz__item ${
+					option === a ? "quiz__item--correct" : ""
+				}`}
 			>
 				<span className="quiz__item__letter">{letters[index]}</span>
 				<p>{option}</p>
@@ -40,7 +68,7 @@ const Quiz = ({
 				<img className="quiz__flag" src={imgSrc} />
 			) : null}
 			<h2>{q} ?</h2>
-			<ul className="quiz__items">{listOfOptions}</ul>
+			<ul className="quiz__items">{reveal === false ? before : after}</ul>
 		</div>
 	);
 };

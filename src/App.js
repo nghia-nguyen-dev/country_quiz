@@ -84,6 +84,7 @@ const App = () => {
 	const [score, setScore] = useState(0); // Correct answers
 	const [currentQuestion, setCurrentQuestion] = useState(null);
 	const [nextQuestion, setNextQuestion] = useState(null);
+	const [reveal, setReveal] = useState(false)
 
 	useEffect(() => {
 		fetch(buildQueryStr(getRandomCodes(config.options)))
@@ -117,12 +118,14 @@ const App = () => {
 								counter={counter}
 								setCounter={setCounter}
 								fetchNextData={fetchNextData}
+								reveal={reveal}
+								setReveal={setReveal}
 							/>
 						)}
 						<Button
-							text="Next"
 							nextQuestion={nextQuestion}
 							setCurrentQuestion={setCurrentQuestion}
+							setReveal={setReveal}
 						/>
 					</Card>
 				</div>

@@ -47,13 +47,29 @@ h2 {
 }
 
 .quiz__flag {
-   border: 1px solid black;
-   width: 36%;
+	border: 1px solid black;
+	width: 36%;
 }
 
 .quiz__item--correct {
-	background-color: green;
+	background: #60BF88;
+	border: 2px solid #60BF88;
+	color: #FFF;
 }
+.quiz__item--correct:hover {
+	background: #60BF88;
+	border: 2px solid #60BF88;
+	color: #FFF;
+}
+
 .quiz__item--wrong {
-	background-color: red;
+	background: #EA8282;
+	border: 2px solid #EA8282;
+	color: #FFF;
+}
+
+.quiz__item--wrong:hover {
+	background: #EA8282;
+	border: 2px solid #EA8282;
+	color: #FFF;
 }
