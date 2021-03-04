@@ -1,4 +1,4 @@
-export default Button = ({ nextQuestion, setCurrentQuestion, text }) => {
+const Button = ({ nextQuestion, setCurrentQuestion, text }) => {
 	return (
 		<button
 			onClick={() => {
@@ -10,3 +10,5 @@ export default Button = ({ nextQuestion, setCurrentQuestion, text }) => {
 		</button>
 	);
 };
+
+export default Button

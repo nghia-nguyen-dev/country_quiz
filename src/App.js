@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "./components/Card";
 import Question from "./components/Question";
 import countryCodes from "./data/countryCodes.json";
@@ -78,7 +78,7 @@ const generateQuestion = (countries) => {
 };
 
 // ----------------------------------------------------------------- APP
-export default App = () => {
+const App = () => {
 	const [counter, setCounter] = useState(config.questions); // Number of questions
 	const [score, setScore] = useState(0); // Correct answers
 	const [currentQuestion, setCurrentQuestion] = useState(null);
@@ -132,3 +132,5 @@ export default App = () => {
 		</div>
 	);
 };
+
+export default App
