@@ -4,6 +4,7 @@ import Question from "./components/Question";
 import countryCodes from "./data/countryCodes.json";
 import Button from "components/Button";
 import LoadingScreen from "components/LoadingScreen";
+import Results from "components/Results";
 
 const config = {
 	options: 4,
@@ -88,7 +89,7 @@ const App = () => {
 		fetch(buildQueryStr(getRandomCodes(config.options)))
 			.then((res) => res.json())
 			.then((data) => generateQuestion(data))
-			.then((question) => setCurrentQuestion(question));
+			.then((q) => setCurrentQuestion(q));
 	}, []);
 
 	const fetchNextData = () => {
@@ -98,22 +99,19 @@ const App = () => {
 			.then((question) => setNextQuestion(question));
 	};
 
-	const renderedResults = () => {
-		return <div>{`You got ${score} correct out of 5`}</div>;
-	};
-
 	return (
 		<div className="app">
 			{currentQuestion === null ? (
 				<LoadingScreen />
 			) : (
-				<React.Fragment>
+				<div>
 					<h1>Country Quiz</h1>
 					<Card>
 						{counter === 0 ? (
-							renderedResults()
+							<Results score={score}/>
 						) : (
 							<Question
+								currentQuestion={currentQuestion}
 								score={score}
 								setScore={setScore}
 								counter={counter}
@@ -127,10 +125,10 @@ const App = () => {
 							setCurrentQuestion={setCurrentQuestion}
 						/>
 					</Card>
-				</React.Fragment>
+				</div>
 			)}
 		</div>
 	);
 };
 
-export default App
+export default App;

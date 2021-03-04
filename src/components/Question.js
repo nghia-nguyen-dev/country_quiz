@@ -1,6 +1,4 @@
-const letters = ["A", "B", "C", "D"];
-
-export default ({
+const Questions = ({
 	currentQuestion: { q, a, options, subject, imgSrc },
 	score,
 	setScore,
@@ -9,6 +7,7 @@ export default ({
 	fetchNextData,
 }) => {
 	const listOfOptions = options.map((option, index) => {
+		const letters = ["A", "B", "C", "D"];
 		return (
 			<li
 				onClick={() => {
@@ -43,3 +42,5 @@ export default ({
 		</div>
 	);
 };
+
+export default Questions;
