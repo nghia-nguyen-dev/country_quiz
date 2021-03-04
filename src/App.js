@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import Card from "./components/Card";
 import Question from "./components/Question";
 import countryCodes from "./data/countryCodes.json";
+import Button from "components/Button";
 
 const config = {
 	options: 4,
 	questions: 5,
-}
+};
 
 const questions = [
 	function (countries) {
@@ -121,6 +122,11 @@ const App = () => {
 							fetchNextData={fetchNextData}
 						/>
 					)}
+					<Button
+						text="Next"
+						nextQuestion={nextQuestion}
+						setCurrentQuestion={setCurrentQuestion}
+					/>
 				</Card>
 			</div>
 		);

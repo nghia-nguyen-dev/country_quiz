@@ -4,10 +4,8 @@ export default ({
 	currentQuestion: { q, a, options, subject, imgSrc },
 	score,
 	setScore,
-	setCurrentQuestion,
 	counter,
 	setCounter,
-	nextQuestion,
 	fetchNextData,
 }) => {
 	const listOfOptions = options.map((option, index) => {
@@ -42,14 +40,6 @@ export default ({
 			) : null}
 			<h2>{q} ?</h2>
 			<ul className="question__items">{listOfOptions}</ul>
-			<button
-				onClick={() => {
-					setCurrentQuestion(nextQuestion);
-				}}
-				className="question__btn"
-			>
-				Next
-			</button>
 		</div>
 	);
 };
