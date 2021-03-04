@@ -3,6 +3,7 @@ import Card from "./components/Card";
 import Question from "./components/Question";
 import countryCodes from "./data/countryCodes.json";
 import Button from "components/Button";
+import LoadingScreen from "components/LoadingScreen"
 
 const config = {
 	options: 4,
@@ -103,7 +104,7 @@ const App = () => {
 
 	const renderContent = () => {
 		return currentQuestion === null ? (
-			<div className="loading-text">Loading...</div>
+			<LoadingScreen />
 		) : (
 			<div>
 				<h1>Country Quiz</h1>
