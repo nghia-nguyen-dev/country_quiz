@@ -11,6 +11,11 @@ const config = {
 	questions: 5,
 };
 
+const config = {
+	options: 4,
+	questions: 5,
+}
+
 const questions = [
 	function (countries) {
 		const random = getRandomItem(countries);
