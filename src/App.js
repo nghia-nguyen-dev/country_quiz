@@ -81,61 +81,73 @@ const generateQuestion = (countries) => {
 // ----------------------------------------------------------------- APP
 const App = () => {
 	const [currentQuestion, setCurrentQuestion] = useState({});
-	const [counter, setCounter] = useState(5);
-	const [selected, setSelected] = useState(false);
-	const [showResults, setShowResults] = useState(false)
+	const [state, setState] = useState(1);
 
 	useEffect(() => {
-		fetch(buildQueryStr(getRandomCodes(config.options)))
-			.then((res) => res.json())
-			.then((data) => generateQuestion(data))
-			.then((q) => setCurrentQuestion(q));
-	}, [counter]);
+		// Only fetch in state 1
+		if (state === 1) {
+			console.log(`fetching data`);
+			fetch(buildQueryStr(getRandomCodes(config.options)))
+				.then((res) => res.json())
+				.then((data) => generateQuestion(data))
+				.then((q) => setCurrentQuestion(q));
+		}
+	}, [state]);
 
 	const QuizOptions = () => {
-		return currentQuestion.options?.map((option) => {
+		return currentQuestion.options?.map((option, index) => {
+			const letters = ["A", "B", "C", "D"];
 			return (
-				<li
-					onClick={() => {
-						console.log(`<li>`);
-						setSelected(true);
-						// show correct/wrong answer
-						setShowResults(true)
-					}}
-				>
+				<li onClick={() => setState(2)}>
+					<span>{letters[index]}</span>
 					{option}
 				</li>
 			);
 		});
 	};
 
-	const QuizResults = () => {
-		return <div>Results</div>
-	}
+	const renderCard = (state) => {
+		switch (state) {
+			case 1:
+				return (
+					<div className="card">
+						<p>state 1</p>
+						<h2>{currentQuestion.q}</h2>
+						<ul>{QuizOptions()}</ul>
+						<button onClick={() => setState(1)}>Next</button>
+					</div>
+				);
+
+			case 2:
+				return (
+					<div className="card">
+						<p>state 2</p>
+
+						<h2>{currentQuestion.q}</h2>
+						<ul>{QuizOptions()}</ul>
+						<button onClick={() => setState(1)}>Next</button>
+					</div>
+				);
+
+			case 3:
+				return <div className="card">state 3</div>;
+		}
+	};
 
 	return (
 		<div className="app">
 			<div className="container">
 				<h1>Country Quiz</h1>
-				<div className="card">
-					<h2>{currentQuestion.q}</h2>
-					<ul>{showResults ? QuizResults():QuizOptions()}</ul>
-					<button
-						onClick={() => {
-							setShowResults(false)
-							if (counter !== 0) {
-								setCounter(counter - 1);
-							} else {
-								// show score board
-							}
-						}}
-					>
-						Next
-					</button>
-				</div>
+				{renderCard(state)}
 			</div>
 		</div>
 	);
 };
 
 export default App;
+
+const state = {
+	1: `show question`,
+	2: "show answers",
+	3: "show score card",
+};
