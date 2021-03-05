@@ -5,6 +5,9 @@ import countryCodes from "./data/countryCodes.json";
 import Button from "components/Button";
 import LoadingScreen from "components/LoadingScreen";
 import Results from "components/Results";
+import Option from "components/Option";
+
+console.log(Option);
 
 const config = {
 	options: 4,
@@ -82,7 +85,7 @@ const generateQuestion = (countries) => {
 const App = () => {
 	const [currentQuestion, setCurrentQuestion] = useState({});
 	const [state, setState] = useState(1);
-	const [counter, setCounter] = useState(5);
+	const [counter, setCounter] = useState(config.questions);
 	const [selected, setSelected] = useState("");
 
 	useEffect(() => {
@@ -101,17 +104,25 @@ const App = () => {
 			const letters = ["A", "B", "C", "D"];
 
 			// Return different look base on current state
+			// <li></li> return in state 2 should not have click handlers
 			if (state === 2) {
 				if (option === currentQuestion.answer) {
 					return (
-						<li className="correct" onClick={handleOptionClick}>
+						<li className="correct">
 							<span>{letters[index]}</span>
 							{option}
 						</li>
 					);
 				} else if (option === selected) {
 					return (
-						<li className="incorrect" onClick={handleOptionClick}>
+						<li className="incorrect">
+							<span>{letters[index]}</span>
+							{option}
+						</li>
+					);
+				} else {
+					return (
+						<li>
 							<span>{letters[index]}</span>
 							{option}
 						</li>
@@ -120,10 +131,16 @@ const App = () => {
 			}
 
 			return (
-				<li onClick={() => handleOptionClick(option)}>
-					<span>{letters[index]}</span>
-					{option}
-				</li>
+				<Option
+					handleOptionClick={handleOptionClick}
+					letter={letters[index]}
+					option={option}
+
+				/>
+				// <li onClick={() => handleOptionClick(option)}>
+				// 	<span>{letters[index]}</span>
+				// 	{option}
+				// </li>
 			);
 		});
 	};
@@ -137,6 +154,7 @@ const App = () => {
 	};
 
 	const handleOptionClick = (option) => {
+		console.log(`option clicked!`);
 		setState(2);
 		setCounter(counter - 1);
 		setSelected(option);

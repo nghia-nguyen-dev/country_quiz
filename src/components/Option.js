@@ -1,8 +1,13 @@
-export default Option = () => {
+export default Option = ({
+	letter,
+	option,
+	handleOptionClick,
+	className = "",
+}) => {
 	return (
-		<li>
-			<span>Letter</span>
-			<p>Country</p>
+		<li onClick={() => handleOptionClick(option)} className={className}>
+			<span>{letter}</span>
+			{option}
 		</li>
 	);
 };
