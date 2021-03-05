@@ -80,56 +80,60 @@ const generateQuestion = (countries) => {
 
 // ----------------------------------------------------------------- APP
 const App = () => {
-	const [counter, setCounter] = useState(config.questions); // Number of questions
-	const [score, setScore] = useState(0); // Correct answers
-	const [currentQuestion, setCurrentQuestion] = useState(null);
-	const [nextQuestion, setNextQuestion] = useState(null);
-	const [reveal, setReveal] = useState(false)
+	const [currentQuestion, setCurrentQuestion] = useState({});
+	const [counter, setCounter] = useState(5);
+	const [selected, setSelected] = useState(false);
+	const [showResults, setShowResults] = useState(false)
 
 	useEffect(() => {
 		fetch(buildQueryStr(getRandomCodes(config.options)))
 			.then((res) => res.json())
 			.then((data) => generateQuestion(data))
 			.then((q) => setCurrentQuestion(q));
-	}, []);
+	}, [counter]);
 
-	const fetchNextData = () => {
-		fetch(buildQueryStr(getRandomCodes(config.options)))
-			.then((res) => res.json())
-			.then((data) => generateQuestion(data))
-			.then((question) => setNextQuestion(question));
+	const QuizOptions = () => {
+		return currentQuestion.options?.map((option) => {
+			return (
+				<li
+					onClick={() => {
+						console.log(`<li>`);
+						setSelected(true);
+						// show correct/wrong answer
+						setShowResults(true)
+					}}
+				>
+					{option}
+				</li>
+			);
+		});
 	};
+
+	const QuizResults = () => {
+		return <div>Results</div>
+	}
 
 	return (
 		<div className="app">
-			{currentQuestion === null ? (
-				<LoadingScreen />
-			) : (
-				<div>
-					<h1>Country Quiz</h1>
-					<Card>
-						{counter === 0 ? (
-							<Results score={score} />
-						) : (
-							<Quiz
-								currentQuestion={currentQuestion}
-								score={score}
-								setScore={setScore}
-								counter={counter}
-								setCounter={setCounter}
-								fetchNextData={fetchNextData}
-								reveal={reveal}
-								setReveal={setReveal}
-							/>
-						)}
-						<Button
-							nextQuestion={nextQuestion}
-							setCurrentQuestion={setCurrentQuestion}
-							setReveal={setReveal}
-						/>
-					</Card>
+			<div className="container">
+				<h1>Country Quiz</h1>
+				<div className="card">
+					<h2>{currentQuestion.q}</h2>
+					<ul>{showResults ? QuizResults():QuizOptions()}</ul>
+					<button
+						onClick={() => {
+							setShowResults(false)
+							if (counter !== 0) {
+								setCounter(counter - 1);
+							} else {
+								// show score board
+							}
+						}}
+					>
+						Next
+					</button>
 				</div>
-			)}
+			</div>
 		</div>
 	);
 };
