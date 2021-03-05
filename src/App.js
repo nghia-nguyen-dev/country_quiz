@@ -79,7 +79,12 @@ const App = () => {
 				);
 
 			case 3:
-				return <div className="card">state 3</div>;
+				return <div className="card">
+					<p>state {state}</p>
+					<h2>Results</h2>
+					<p>You got 4 correct answers</p>
+					<button>Try again</button>
+				</div>;
 		}
 	};
 
