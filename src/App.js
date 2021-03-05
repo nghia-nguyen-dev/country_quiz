@@ -49,23 +49,8 @@ const App = () => {
 		switch (state) {
 			case 0:
 				return <div>Loading...</div>;
-			case 1:
-				return (
-					<div className="card">
-						<p>state {state}</p>
-						<h2>{currentQuestion.question}</h2>
-						<ul>
-							<QuizOptions
-								currentQuestion={currentQuestion}
-								state={state}
-								handleOptionClick={handleOptionClick}
-								selected={selected}
-							/>
-						</ul>
-						<button onClick={handleNextClick}>Next</button>
-					</div>
-				);
 
+			case 1:
 			case 2:
 				return (
 					<div className="card">
