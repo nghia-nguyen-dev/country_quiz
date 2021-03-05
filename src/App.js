@@ -15,7 +15,6 @@ const App = () => {
 	const [selected, setSelected] = useState("");
 
 	useEffect(() => {
-		// Only fetch in state 1
 		if (state === 1) {
 			console.log(`fetching data`);
 			fetch(buildQueryStr(getRandomCodes(config.options)))
@@ -48,7 +47,7 @@ const App = () => {
 			case 1:
 				return (
 					<div className="card">
-						<p>state 1</p>
+						<p>state {state}</p>
 						<h2>{currentQuestion.question}</h2>
 						<ul>
 							<QuizOptions
@@ -65,7 +64,7 @@ const App = () => {
 			case 2:
 				return (
 					<div className="card">
-						<p>state 2</p>
+						<p>state {state}</p>
 						<h2>{currentQuestion.question}</h2>
 						<ul>
 							<QuizOptions
@@ -95,9 +94,3 @@ const App = () => {
 };
 
 export default App;
-
-const state = {
-	1: `show question`,
-	2: "show answers",
-	3: "show score card",
-};
