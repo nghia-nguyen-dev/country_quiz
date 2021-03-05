@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import QuizOptions from "components/QuizOptions";
-import {buildQueryStr,getRandomCodes,generateQuestion} from "utils/helpers"
+import { buildQueryStr, getRandomCodes, generateQuestion } from "utils/helpers";
 
 const config = {
 	options: 4,
@@ -10,17 +10,20 @@ const config = {
 // ----------------------------------------------------------------- APP
 const App = () => {
 	const [currentQuestion, setCurrentQuestion] = useState({});
-	const [state, setState] = useState(1);
+	const [state, setState] = useState(0);
 	const [counter, setCounter] = useState(config.questions);
 	const [selected, setSelected] = useState("");
 
 	useEffect(() => {
-		if (state === 1) {
+		if (state === 1 || state === 0) {
 			console.log(`fetching data`);
 			fetch(buildQueryStr(getRandomCodes(config.options)))
 				.then((res) => res.json())
 				.then((data) => generateQuestion(data))
-				.then((q) => setCurrentQuestion(q));
+				.then((q) => {
+					setCurrentQuestion(q);
+					setState(1);
+				});
 		}
 	}, [state]);
 
@@ -44,6 +47,8 @@ const App = () => {
 
 	const renderCard = (state) => {
 		switch (state) {
+			case 0:
+				return <div>Loading...</div>;
 			case 1:
 				return (
 					<div className="card">
@@ -79,12 +84,14 @@ const App = () => {
 				);
 
 			case 3:
-				return <div className="card">
-					<p>state {state}</p>
-					<h2>Results</h2>
-					<p>You got 4 correct answers</p>
-					<button>Try again</button>
-				</div>;
+				return (
+					<div className="card">
+						<p>state {state}</p>
+						<h2>Results</h2>
+						<p>You got 4 correct answers</p>
+						<button>Try again</button>
+					</div>
+				);
 		}
 	};
 
