@@ -7,8 +7,6 @@ import LoadingScreen from "components/LoadingScreen";
 import Results from "components/Results";
 import Option from "components/Option";
 
-console.log(Option);
-
 const config = {
 	options: 4,
 	questions: 5,
