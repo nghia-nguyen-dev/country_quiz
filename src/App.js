@@ -15,7 +15,6 @@ const App = () => {
 	const [selected, setSelected] = useState("");
 
 	useEffect(() => {
-		// Only fetch in state 1
 		if (state === 1) {
 			console.log(`fetching data`);
 			fetch(buildQueryStr(getRandomCodes(config.options)))
@@ -95,9 +94,3 @@ const App = () => {
 };
 
 export default App;
-
-const state = {
-	1: `show question`,
-	2: "show answers",
-	3: "show score card",
-};
