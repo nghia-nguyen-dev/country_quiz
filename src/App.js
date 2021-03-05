@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Card from "./components/Card";
-import Quiz from "./components/Quiz";
 import countryCodes from "./data/countryCodes.json";
-import Button from "components/Button";
-import LoadingScreen from "components/LoadingScreen";
-import Results from "components/Results";
-import Option from "components/Option";
+import QuizOptions from "components/QuizOptions";
 
 const config = {
 	options: 4,
@@ -97,53 +92,6 @@ const App = () => {
 		}
 	}, [state]);
 
-	const QuizOptions = () => {
-		return currentQuestion.options?.map((option, index) => {
-			const letters = ["A", "B", "C", "D"];
-
-			// Return different look/snapshot base on current state
-			if (state === 2) {
-				if (option === currentQuestion.answer) {
-					return (
-						<Option
-							handleOptionClick={handleOptionClick}
-							letter={letters[index]}
-							option={option}
-							className="correct"
-						/>
-					);
-				} else if (option === selected) {
-					return (
-						<Option
-							handleOptionClick={handleOptionClick}
-							letter={letters[index]}
-							option={option}
-							className="incorrect"
-						/>
-					);
-				} else {
-					return (
-						<Option
-							handleOptionClick={handleOptionClick}
-							letter={letters[index]}
-							option={option}
-							className=""
-						/>
-					);
-				}
-			}
-
-			return (
-				<Option
-					handleOptionClick={handleOptionClick}
-					letter={letters[index]}
-					option={option}
-					className=""
-				/>
-			);
-		});
-	};
-
 	const handleNextClick = () => {
 		if (counter === 0) {
 			setState(3);
@@ -169,7 +117,14 @@ const App = () => {
 					<div className="card">
 						<p>state 1</p>
 						<h2>{currentQuestion.question}</h2>
-						<ul>{QuizOptions()}</ul>
+						<ul>
+							<QuizOptions
+								currentQuestion={currentQuestion}
+								state={state}
+								handleOptionClick={handleOptionClick}
+								selected={selected}
+							/>
+						</ul>
 						<button onClick={handleNextClick}>Next</button>
 					</div>
 				);
@@ -179,7 +134,14 @@ const App = () => {
 					<div className="card">
 						<p>state 2</p>
 						<h2>{currentQuestion.question}</h2>
-						<ul>{QuizOptions()}</ul>
+						<ul>
+							<QuizOptions
+								currentQuestion={currentQuestion}
+								state={state}
+								handleOptionClick={handleOptionClick}
+								selected={selected}
+							/>
+						</ul>
 						<button onClick={handleNextClick}>Next</button>
 					</div>
 				);
