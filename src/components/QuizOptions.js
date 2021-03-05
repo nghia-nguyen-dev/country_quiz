@@ -2,10 +2,6 @@ import Option from "components/Option";
 
 export default ({ currentQuestion, state, handleOptionClick, selected }) => {
 
-   if (currentQuestion.options === undefined) {
-      return null
-   }
-
 	return currentQuestion.options?.map((option, index) => {
 		const letters = ["A", "B", "C", "D"];
 
