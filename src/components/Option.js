@@ -1,9 +1,4 @@
-export default Option = ({
-	letter,
-	option,
-	handleOptionClick = "",
-	className = "",
-}) => {
+export default Option = ({ letter, option, handleOptionClick, className }) => {
 	return (
 		<li onClick={() => handleOptionClick(option)} className={className}>
 			<span>{letter}</span>

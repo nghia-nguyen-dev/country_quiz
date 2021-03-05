@@ -101,8 +101,7 @@ const App = () => {
 		return currentQuestion.options?.map((option, index) => {
 			const letters = ["A", "B", "C", "D"];
 
-			// Return different look base on current state
-			// <li></li> return in state 2 should not have click handlers
+			// Return different look/snapshot base on current state
 			if (state === 2) {
 				if (option === currentQuestion.answer) {
 					return (
