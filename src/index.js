@@ -11,6 +11,4 @@ const MyComponent = () => {
 	);
 };
 
-console.log(MyComponent)
-
 ReactDOM.render(<App />, document.querySelector("#root"));

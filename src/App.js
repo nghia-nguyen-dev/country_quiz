@@ -108,24 +108,30 @@ const App = () => {
 			if (state === 2) {
 				if (option === currentQuestion.answer) {
 					return (
-						<li className="correct">
-							<span>{letters[index]}</span>
-							{option}
-						</li>
+						<Option
+							handleOptionClick={handleOptionClick}
+							letter={letters[index]}
+							option={option}
+							className="correct"
+						/>
 					);
 				} else if (option === selected) {
 					return (
-						<li className="incorrect">
-							<span>{letters[index]}</span>
-							{option}
-						</li>
+						<Option
+							handleOptionClick={handleOptionClick}
+							letter={letters[index]}
+							option={option}
+							className="incorrect"
+						/>
 					);
 				} else {
 					return (
-						<li>
-							<span>{letters[index]}</span>
-							{option}
-						</li>
+						<Option
+							handleOptionClick={handleOptionClick}
+							letter={letters[index]}
+							option={option}
+							className=""
+						/>
 					);
 				}
 			}
@@ -135,12 +141,8 @@ const App = () => {
 					handleOptionClick={handleOptionClick}
 					letter={letters[index]}
 					option={option}
-
+					className=""
 				/>
-				// <li onClick={() => handleOptionClick(option)}>
-				// 	<span>{letters[index]}</span>
-				// 	{option}
-				// </li>
 			);
 		});
 	};
@@ -154,6 +156,9 @@ const App = () => {
 	};
 
 	const handleOptionClick = (option) => {
+		if (state === 2) {
+			return;
+		}
 		console.log(`option clicked!`);
 		setState(2);
 		setCounter(counter - 1);

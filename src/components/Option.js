@@ -1,7 +1,7 @@
 export default Option = ({
 	letter,
 	option,
-	handleOptionClick,
+	handleOptionClick = "",
 	className = "",
 }) => {
 	return (
