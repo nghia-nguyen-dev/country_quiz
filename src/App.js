@@ -82,6 +82,7 @@ const generateQuestion = (countries) => {
 const App = () => {
 	const [currentQuestion, setCurrentQuestion] = useState({});
 	const [state, setState] = useState(1);
+	const [counter, setCounter] = useState(5);
 
 	useEffect(() => {
 		// Only fetch in state 1
@@ -97,13 +98,37 @@ const App = () => {
 	const QuizOptions = () => {
 		return currentQuestion.options?.map((option, index) => {
 			const letters = ["A", "B", "C", "D"];
+
+			// Return different look base on state
+			if (state === 2 && option === currentQuestion.a) {
+				return (
+					<li className="correct" onClick={handleOptionClick}>
+						<span>{letters[index]}</span>
+						{option}
+					</li>
+				);
+			}
+
 			return (
-				<li onClick={() => setState(2)}>
+				<li onClick={handleOptionClick}>
 					<span>{letters[index]}</span>
 					{option}
 				</li>
 			);
 		});
+	};
+
+	const handleNextClick = () => {
+		if (counter === 0) {
+			setState(3);
+		} else {
+			setState(1);
+		}
+	};
+
+	const handleOptionClick = () => {
+		setState(2);
+		setCounter(counter - 1);
 	};
 
 	const renderCard = (state) => {
@@ -114,7 +139,7 @@ const App = () => {
 						<p>state 1</p>
 						<h2>{currentQuestion.q}</h2>
 						<ul>{QuizOptions()}</ul>
-						<button onClick={() => setState(1)}>Next</button>
+						<button onClick={handleNextClick}>Next</button>
 					</div>
 				);
 
@@ -122,10 +147,9 @@ const App = () => {
 				return (
 					<div className="card">
 						<p>state 2</p>
-
 						<h2>{currentQuestion.q}</h2>
 						<ul>{QuizOptions()}</ul>
-						<button onClick={() => setState(1)}>Next</button>
+						<button onClick={handleNextClick}>Next</button>
 					</div>
 				);
 
