@@ -16,8 +16,8 @@ const questions = [
 		const random = getRandomItem(countries);
 		return {
 			subject: "capital",
-			q: `${random.capital} is the capital of`,
-			a: random.name,
+			question: `${random.capital} is the capital of`,
+			answer: random.name,
 			options: countries.map((country) => country.name),
 		};
 	},
@@ -25,8 +25,8 @@ const questions = [
 		const random = getRandomItem(countries);
 		return {
 			subject: "language",
-			q: `${random.languages[0].nativeName} is the native language of`,
-			a: random.name,
+			question: `${random.languages[0].nativeName} is the native language of`,
+			answer: random.name,
 			options: countries.map((country) => country.name),
 		};
 	},
@@ -34,8 +34,8 @@ const questions = [
 		const random = getRandomItem(countries);
 		return {
 			subject: "flag",
-			q: `This is the flag of`,
-			a: random.name,
+			question: `This is the flag of`,
+			answer: random.name,
 			options: countries.map((country) => country.name),
 			imgSrc: random.flag,
 		};
@@ -83,6 +83,7 @@ const App = () => {
 	const [currentQuestion, setCurrentQuestion] = useState({});
 	const [state, setState] = useState(1);
 	const [counter, setCounter] = useState(5);
+	const [selected, setSelected] = useState("");
 
 	useEffect(() => {
 		// Only fetch in state 1
@@ -99,18 +100,27 @@ const App = () => {
 		return currentQuestion.options?.map((option, index) => {
 			const letters = ["A", "B", "C", "D"];
 
-			// Return different look base on state
-			if (state === 2 && option === currentQuestion.a) {
-				return (
-					<li className="correct" onClick={handleOptionClick}>
-						<span>{letters[index]}</span>
-						{option}
-					</li>
-				);
+			// Return different look base on current state
+			if (state === 2) {
+				if (option === currentQuestion.answer) {
+					return (
+						<li className="correct" onClick={handleOptionClick}>
+							<span>{letters[index]}</span>
+							{option}
+						</li>
+					);
+				} else if (option === selected) {
+					return (
+						<li className="incorrect" onClick={handleOptionClick}>
+							<span>{letters[index]}</span>
+							{option}
+						</li>
+					);
+				}
 			}
 
 			return (
-				<li onClick={handleOptionClick}>
+				<li onClick={() => handleOptionClick(option)}>
 					<span>{letters[index]}</span>
 					{option}
 				</li>
@@ -126,9 +136,10 @@ const App = () => {
 		}
 	};
 
-	const handleOptionClick = () => {
+	const handleOptionClick = (option) => {
 		setState(2);
 		setCounter(counter - 1);
+		setSelected(option);
 	};
 
 	const renderCard = (state) => {
@@ -137,7 +148,7 @@ const App = () => {
 				return (
 					<div className="card">
 						<p>state 1</p>
-						<h2>{currentQuestion.q}</h2>
+						<h2>{currentQuestion.question}</h2>
 						<ul>{QuizOptions()}</ul>
 						<button onClick={handleNextClick}>Next</button>
 					</div>
@@ -147,7 +158,7 @@ const App = () => {
 				return (
 					<div className="card">
 						<p>state 2</p>
-						<h2>{currentQuestion.q}</h2>
+						<h2>{currentQuestion.question}</h2>
 						<ul>{QuizOptions()}</ul>
 						<button onClick={handleNextClick}>Next</button>
 					</div>
