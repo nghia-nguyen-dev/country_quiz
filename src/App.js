@@ -59,6 +59,7 @@ const App = () => {
 				return (
 					<div className="card">
 						<p>state {state}</p>
+						<img src={currentQuestion.imgSrc} />
 						<h2>{currentQuestion.question}</h2>
 						<ul>
 							<QuizOptions
