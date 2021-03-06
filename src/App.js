@@ -14,7 +14,7 @@ const App = () => {
 	const [state, setState] = useState(0);
 	const [counter, setCounter] = useState(config.questions);
 	const [selected, setSelected] = useState("");
-	const [score, setScore] = useState(0)
+	const [score, setScore] = useState(0);
 
 	useEffect(() => {
 		if (state === 1 || state === 0) {
@@ -31,9 +31,9 @@ const App = () => {
 
 	useEffect(() => {
 		if (selected === currentQuestion.answer) {
-			setScore(score + 1)
+			setScore(score + 1);
 		}
-	}, [selected])
+	}, [selected]);
 
 	const handleNextClick = () => {
 		if (counter === 0) {
@@ -47,7 +47,7 @@ const App = () => {
 		if (state === 2) {
 			return;
 		}
-		
+
 		setState(2);
 		setCounter(counter - 1);
 		setSelected(option);
@@ -68,10 +68,12 @@ const App = () => {
 					<div className="card">
 						<div className="quiz">
 							<img className="quiz__traveler" src={traveler} />
-							{currentQuestion.subject === "flag" ? <img
-								className="quiz__flag"
-								src={currentQuestion.imgSrc}
-							/> : null}
+							{currentQuestion.subject === "flag" ? (
+								<img
+									className="quiz__flag"
+									src={currentQuestion.imgSrc}
+								/>
+							) : null}
 							<h2 className="quiz__question">
 								{currentQuestion.question}
 							</h2>
@@ -82,13 +84,15 @@ const App = () => {
 								handleOptionClick={handleOptionClick}
 								selected={selected}
 							/>
-						<button
-							className={`quiz__btn ${state === 1 ? 'disable' : ''}`}
-							onClick={handleNextClick}
-							disabled={state === 1 ? true : false}
-						>
-							Next
-						</button>
+							<button
+								className={`quiz__btn ${
+									state === 1 ? "disable" : ""
+								}`}
+								onClick={handleNextClick}
+								disabled={state === 1 ? true : false}
+							>
+								Next
+							</button>
 						</div>
 					</div>
 				);
@@ -97,7 +101,9 @@ const App = () => {
 				return (
 					<div className="card">
 						<h2>Results</h2>
-						<p>You got {score} correct answers</p>
+						<p>
+							You got {score} out of {config.questions} questions
+						</p>
 						<button onClick={restart}>Try again</button>
 					</div>
 				);
