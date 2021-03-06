@@ -45,6 +45,10 @@ const App = () => {
 		setSelected(option);
 	};
 
+	const restart = () => {
+		setState(0)
+	}
+
 	const renderCard = (state) => {
 		switch (state) {
 			case 0:
@@ -79,7 +83,7 @@ const App = () => {
 						<p>state {state}</p>
 						<h2>Results</h2>
 						<p>You got 4 correct answers</p>
-						<button>Try again</button>
+						<button onClick={restart}>Try again</button>
 					</div>
 				);
 		}
