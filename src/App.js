@@ -59,6 +59,7 @@ const App = () => {
 			case 2:
 				return (
 					<div className="card">
+						<img className="traveler" src={traveler}/>
 						<p>state {state}</p>
 						<div className="quiz">
 							<img className="quiz__traveler" src={traveler} />
