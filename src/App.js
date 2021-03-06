@@ -59,7 +59,7 @@ const App = () => {
 			case 2:
 				return (
 					<div className="card">
-						<img className="traveler" src={traveler}/>
+						<img className="traveler" src={traveler} />
 						<p>state {state}</p>
 						<div className="quiz">
 							<img className="quiz__traveler" src={traveler} />
@@ -67,7 +67,9 @@ const App = () => {
 								className="quiz__flag"
 								src={currentQuestion.imgSrc}
 							/>
-							<h2 className="quiz__question">{currentQuestion.question}</h2>
+							<h2 className="quiz__question">
+								{currentQuestion.question}
+							</h2>
 
 							<QuizOptions
 								currentQuestion={currentQuestion}
