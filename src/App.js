@@ -59,14 +59,13 @@ const App = () => {
 			case 2:
 				return (
 					<div className="card">
-						<img className="traveler" src={traveler} />
-						<p>state {state}</p>
+						{/* <p>state {state}</p> */}
 						<div className="quiz">
 							<img className="quiz__traveler" src={traveler} />
-							<img
+							{currentQuestion.subject === "flag" ? <img
 								className="quiz__flag"
 								src={currentQuestion.imgSrc}
-							/>
+							/> : null}
 							<h2 className="quiz__question">
 								{currentQuestion.question}
 							</h2>
@@ -77,20 +76,21 @@ const App = () => {
 								handleOptionClick={handleOptionClick}
 								selected={selected}
 							/>
-						</div>
 						<button
+							className={`quiz__btn ${state === 1 ? 'disable' : ''}`}
 							onClick={handleNextClick}
 							disabled={state === 1 ? true : false}
 						>
 							Next
 						</button>
+						</div>
 					</div>
 				);
 
 			case 3:
 				return (
 					<div className="card">
-						<p>state {state}</p>
+						{/* <p>state {state}</p> */}
 						<h2>Results</h2>
 						<p>You got 4 correct answers</p>
 						<button onClick={restart}>Try again</button>

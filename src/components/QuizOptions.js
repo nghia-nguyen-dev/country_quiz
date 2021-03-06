@@ -7,6 +7,7 @@ export default ({ currentQuestion, state, handleOptionClick, selected }) => {
 		const customOption = (className) => {
 			return (
 				<Option
+					key={option}
 					handleOptionClick={handleOptionClick}
 					letter={letters[index]}
 					option={option}
