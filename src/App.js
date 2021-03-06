@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import QuizOptions from "components/QuizOptions";
 import { buildQueryStr, getRandomCodes, generateQuestion } from "utils/helpers";
+import traveler from "assets/svgs/traveler.svg";
 
 const config = {
 	options: 4,
@@ -46,8 +47,8 @@ const App = () => {
 	};
 
 	const restart = () => {
-		setState(0)
-	}
+		setState(0);
+	};
 
 	const renderCard = (state) => {
 		switch (state) {
@@ -59,16 +60,19 @@ const App = () => {
 				return (
 					<div className="card">
 						<p>state {state}</p>
-						<img src={currentQuestion.imgSrc} />
-						<h2>{currentQuestion.question}</h2>
-						<ul>
-							<QuizOptions
-								currentQuestion={currentQuestion}
-								state={state}
-								handleOptionClick={handleOptionClick}
-								selected={selected}
-							/>
-						</ul>
+						<div className="quiz">
+							<img className="quiz__traveler" src={traveler} />
+							<img className="quiz__flag" src={currentQuestion.imgSrc} />
+							<h2>{currentQuestion.question}</h2>
+							<ul>
+								<QuizOptions
+									currentQuestion={currentQuestion}
+									state={state}
+									handleOptionClick={handleOptionClick}
+									selected={selected}
+								/>
+							</ul>
+						</div>
 						<button
 							onClick={handleNextClick}
 							disabled={state === 1 ? true : false}

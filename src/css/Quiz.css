@@ -48,7 +48,7 @@ h2 {
 
 .quiz__flag {
 	border: 1px solid black;
-	width: 36%;
+	width: 33%;
 }
 
 .quiz__item--correct {
@@ -72,4 +72,10 @@ h2 {
 	background: #EA8282;
 	border: 2px solid #EA8282;
 	color: #FFF;
+}
+
+.quiz__traveler {
+	position: absolute;
+	top: -67px;
+	right: 0px;
 }
