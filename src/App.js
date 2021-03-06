@@ -63,7 +63,7 @@ const App = () => {
 	const renderCard = (state) => {
 		switch (state) {
 			case 0:
-				return <div>Loading...</div>;
+				return <div className="loading-text">Loading...</div>;
 
 			case 1:
 			case 2:
@@ -105,11 +105,17 @@ const App = () => {
 					<div className="card">
 						<div className="results">
 							<img src={resultsSvg} />
-							<h2>Results</h2>
-							<p>
-								You got {score} out of {config.questions}{" "}
-								questions
-							</p>
+							<div className="results__content">
+								<h2>Results</h2>
+								<p>
+									You got{" "}
+									<span className="bold">{score}</span> out of{" "}
+									<span className="bold">
+										{config.questions}
+									</span>{" "}
+									questions
+								</p>
+							</div>
 							<button className="results__btn" onClick={restart}>
 								Try again
 							</button>
