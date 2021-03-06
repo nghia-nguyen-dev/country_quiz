@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import QuizOptions from "components/QuizOptions";
 import { buildQueryStr, getRandomCodes, generateQuestion } from "utils/helpers";
+<<<<<<< HEAD
 import traveler from "assets/svgs/traveler.svg";
+||||||| 705309a
+=======
+import traveler from 'assets/svgs/traveler.svg'
+>>>>>>> e07ba88efc08c6b84b8a0c0ef9d92249ddb79948
 
 const config = {
 	options: 4,
@@ -59,6 +64,7 @@ const App = () => {
 			case 2:
 				return (
 					<div className="card">
+						<img className="traveler" src={traveler}/>
 						<p>state {state}</p>
 						<div className="quiz">
 							<img className="quiz__traveler" src={traveler} />
