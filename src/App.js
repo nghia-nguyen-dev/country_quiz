@@ -1,7 +1,25 @@
 import React, { useState, useEffect } from "react";
 import QuizOptions from "components/QuizOptions";
 import { buildQueryStr, getRandomCodes, generateQuestion } from "utils/helpers";
+<<<<<<< HEAD
+||||||| merged common ancestors
+<<<<<<<<< Temporary merge branch 1
+import traveler from 'assets/svgs/traveler.svg'
+||||||||| 705309a
+=========
+=======
+<<<<<<< HEAD
+>>>>>>> f64ce4a729535393750e6c03eb6fd3cae085e4a3
 import traveler from "assets/svgs/traveler.svg";
+<<<<<<< HEAD
+||||||| merged common ancestors
+>>>>>>>>> Temporary merge branch 2
+=======
+||||||| 705309a
+=======
+import traveler from 'assets/svgs/traveler.svg'
+>>>>>>> e07ba88efc08c6b84b8a0c0ef9d92249ddb79948
+>>>>>>> f64ce4a729535393750e6c03eb6fd3cae085e4a3
 
 const config = {
 	options: 4,
