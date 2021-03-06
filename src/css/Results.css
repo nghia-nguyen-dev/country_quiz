@@ -1,3 +1,38 @@
+.results {
+	text-align: center;
+	width: 320px;
+}
+
 .results__btn {
-   border: none;
+	background-color: transparent;
+	border: none;
+	border: 2px solid #1d355d;
+}
+
+.results__btn:hover {
+	color: #fff;
+	background: #f9a826;
+	border: 2px solid #f9a826;
+}
+
+.results__correct,
+.results_questions {
+	font-weight: 700;
+}
+
+.results__correct {
+   color: #60bf88;
+}
+
+.results h2 {
+	font-family: Poppins;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 48px;
+	line-height: 72px;
+	color: #1d355d;
+}
+
+.results__content {
+	margin: 70px 0;
 }
