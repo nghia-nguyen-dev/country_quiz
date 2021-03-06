@@ -5,7 +5,7 @@ import traveler from "assets/svgs/traveler.svg";
 
 const config = {
 	options: 4,
-	questions: 5,
+	questions: 3,
 };
 
 // ----------------------------------------------------------------- APP
@@ -59,7 +59,6 @@ const App = () => {
 			case 2:
 				return (
 					<div className="card">
-						{/* <p>state {state}</p> */}
 						<div className="quiz">
 							<img className="quiz__traveler" src={traveler} />
 							{currentQuestion.subject === "flag" ? <img
@@ -90,7 +89,6 @@ const App = () => {
 			case 3:
 				return (
 					<div className="card">
-						{/* <p>state {state}</p> */}
 						<h2>Results</h2>
 						<p>You got 4 correct answers</p>
 						<button onClick={restart}>Try again</button>
