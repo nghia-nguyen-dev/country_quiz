@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import QuizOptions from "components/QuizOptions";
 import { buildQueryStr, getRandomCodes, generateQuestion } from "utils/helpers";
 import traveler from "assets/svgs/traveler.svg";
+import resultsSvg from "assets/svgs/results.svg";
 
 const config = {
 	options: 4,
@@ -55,6 +56,8 @@ const App = () => {
 
 	const restart = () => {
 		setState(0);
+		setScore(0);
+		setCounter(config.questions);
 	};
 
 	const renderCard = (state) => {
@@ -100,11 +103,17 @@ const App = () => {
 			case 3:
 				return (
 					<div className="card">
-						<h2>Results</h2>
-						<p>
-							You got {score} out of {config.questions} questions
-						</p>
-						<button onClick={restart}>Try again</button>
+						<div className="results">
+							<img src={resultsSvg} />
+							<h2>Results</h2>
+							<p>
+								You got {score} out of {config.questions}{" "}
+								questions
+							</p>
+							<button className="results__btn" onClick={restart}>
+								Try again
+							</button>
+						</div>
 					</div>
 				);
 		}
