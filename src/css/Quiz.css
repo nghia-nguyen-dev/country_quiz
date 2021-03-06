@@ -19,6 +19,7 @@
 }
 
 .quiz-options__item:hover {
+	cursor: pointer;
 	color: #ffffff;
 	background: #f9a826;
 	border: 2px solid #f9a826;
