@@ -9,7 +9,6 @@ const config = {
 	questions: 3,
 };
 
-// ----------------------------------------------------------------- APP
 const App = () => {
 	const [currentQuestion, setCurrentQuestion] = useState({});
 	const [state, setState] = useState(0);
@@ -109,11 +108,13 @@ const App = () => {
 								<h2>Results</h2>
 								<p>
 									You got{" "}
-									<span className="results__correct">{score}</span> out of{" "}
+									<span className="results__correct">
+										{score}
+									</span>{" "}
+									out of{" "}
 									<span className="results__questions">
 										{config.questions}
 									</span>{" "}
-									
 								</p>
 							</div>
 							<button className="results__btn" onClick={restart}>

@@ -85,6 +85,8 @@
 	color: #fff;
 	background-color: #f9a826;
 	font-weight: bold;
+	display: block;
+	margin-left: auto;
 }
 
 .quiz__btn:hover {
