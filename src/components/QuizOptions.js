@@ -1,7 +1,7 @@
 import Option from "components/Option";
 
 export default ({ currentQuestion, state, handleOptionClick, selected }) => {
-	return currentQuestion.options?.map((option, index) => {
+	const listItems = currentQuestion.options?.map((option, index) => {
 		const letters = ["A", "B", "C", "D"];
 
 		const customOption = (className) => {
@@ -10,7 +10,7 @@ export default ({ currentQuestion, state, handleOptionClick, selected }) => {
 					handleOptionClick={handleOptionClick}
 					letter={letters[index]}
 					option={option}
-					className={className}
+					className={`quiz-options__item ${className}`}
 				/>
 			);
 		};
@@ -26,4 +26,6 @@ export default ({ currentQuestion, state, handleOptionClick, selected }) => {
 
 		return customOption("");
 	});
+
+	return <ul className="quiz-options">{listItems}</ul>;
 };
