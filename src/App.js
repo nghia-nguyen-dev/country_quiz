@@ -64,7 +64,12 @@ const App = () => {
 								selected={selected}
 							/>
 						</ul>
-						<button onClick={handleNextClick}>Next</button>
+						<button
+							onClick={handleNextClick}
+							disabled={state === 1 ? true : false}
+						>
+							Next
+						</button>
 					</div>
 				);
 
