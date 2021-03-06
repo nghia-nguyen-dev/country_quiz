@@ -14,6 +14,7 @@ const App = () => {
 	const [state, setState] = useState(0);
 	const [counter, setCounter] = useState(config.questions);
 	const [selected, setSelected] = useState("");
+	const [score, setScore] = useState(0)
 
 	useEffect(() => {
 		if (state === 1 || state === 0) {
@@ -28,6 +29,12 @@ const App = () => {
 		}
 	}, [state]);
 
+	useEffect(() => {
+		if (selected === currentQuestion.answer) {
+			setScore(score + 1)
+		}
+	}, [selected])
+
 	const handleNextClick = () => {
 		if (counter === 0) {
 			setState(3);
@@ -40,7 +47,7 @@ const App = () => {
 		if (state === 2) {
 			return;
 		}
-		console.log(`option clicked!`);
+		
 		setState(2);
 		setCounter(counter - 1);
 		setSelected(option);
@@ -90,7 +97,7 @@ const App = () => {
 				return (
 					<div className="card">
 						<h2>Results</h2>
-						<p>You got 4 correct answers</p>
+						<p>You got {score} correct answers</p>
 						<button onClick={restart}>Try again</button>
 					</div>
 				);
