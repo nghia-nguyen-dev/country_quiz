@@ -23,8 +23,6 @@ export default ({ currentQuestion, state, handleOptionClick, selected }) => {
 				className={`quiz-options__item ${markSelection}`}
 			/>
 		);
-
-		// Return different look/snapshot base on current state
 	});
 
 	return <ul className="quiz-options">{listItems}</ul>;
