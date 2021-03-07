@@ -25,7 +25,7 @@ export default ({ currentQuestion, state, handleOptionClick, selected }) => {
 			}
 		}
 
-		return customOption("");
+		return customOption();
 	});
 
 	return <ul className="quiz-options">{listItems}</ul>;
