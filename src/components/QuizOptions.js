@@ -1,4 +1,4 @@
-import Option from "components/Option";
+import Icon from "components/Icon"
 
 export default ({ currentQuestion, state, handleOptionClick, selected }) => {
 	const listItems = currentQuestion.options?.map((option, index) => {
@@ -22,6 +22,7 @@ export default ({ currentQuestion, state, handleOptionClick, selected }) => {
 			>
 				<span>{letters[index]}</span>
 				{option}
+				<Icon markSelection={markSelection}/>
 			</li>
 		);
 	});
