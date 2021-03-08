@@ -7,6 +7,17 @@ import resultsSvg from "assets/svgs/results.svg";
 const config = {
 	options: 4,
 	questions: 3,
+	difficulty: {
+		backpacker: {
+			options: 3,
+		},
+		traveler: {
+			options: 4,
+		},
+		voyager: {
+			options: 5,
+		},
+	},
 };
 
 const App = () => {
