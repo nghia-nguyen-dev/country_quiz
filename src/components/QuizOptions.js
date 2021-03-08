@@ -15,13 +15,14 @@ export default ({ currentQuestion, state, handleOptionClick, selected }) => {
 		})();
 
 		return (
-			<Option
+			<li
 				key={option}
-				handleOptionClick={handleOptionClick}
-				letter={letters[index]}
-				option={option}
+				onClick={() => handleOptionClick(option)}
 				className={`quiz-options__item ${markSelection}`}
-			/>
+			>
+				<span>{letters[index]}</span>
+				{option}
+			</li>
 		);
 	});
 
