@@ -100,3 +100,7 @@
 .quiz__btn.disable {
 	opacity: 0.4;
 }
+
+.quiz-options__icon {
+	margin-left: auto;
+}
