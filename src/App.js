@@ -18,7 +18,6 @@ const App = () => {
 
 	useEffect(() => {
 		if (state === 1 || state === 0) {
-			console.log(`fetching data`);
 			fetch(buildQueryStr(getRandomCodes(config.options)))
 				.then((res) => res.json())
 				.then((data) => generateQuestion(data))
