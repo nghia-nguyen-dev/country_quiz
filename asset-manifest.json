@@ -1,23 +1,25 @@
 {
   "files": {
-    "main.css": "/country_quiz/static/css/main.3fa4a3ae.chunk.css",
-    "main.js": "/country_quiz/static/js/main.d199e735.chunk.js",
-    "main.js.map": "/country_quiz/static/js/main.d199e735.chunk.js.map",
+    "main.css": "/country_quiz/static/css/main.526fa896.chunk.css",
+    "main.js": "/country_quiz/static/js/main.93d7e193.chunk.js",
+    "main.js.map": "/country_quiz/static/js/main.93d7e193.chunk.js.map",
     "runtime-main.js": "/country_quiz/static/js/runtime-main.fd3770d3.js",
     "runtime-main.js.map": "/country_quiz/static/js/runtime-main.fd3770d3.js.map",
     "static/js/2.e69326dc.chunk.js": "/country_quiz/static/js/2.e69326dc.chunk.js",
     "static/js/2.e69326dc.chunk.js.map": "/country_quiz/static/js/2.e69326dc.chunk.js.map",
     "index.html": "/country_quiz/index.html",
-    "static/css/main.3fa4a3ae.chunk.css.map": "/country_quiz/static/css/main.3fa4a3ae.chunk.css.map",
+    "static/css/main.526fa896.chunk.css.map": "/country_quiz/static/css/main.526fa896.chunk.css.map",
     "static/js/2.e69326dc.chunk.js.LICENSE.txt": "/country_quiz/static/js/2.e69326dc.chunk.js.LICENSE.txt",
     "static/media/index.css": "/country_quiz/static/media/background.41dbc550.png",
+    "static/media/correct.a0805114.svg": "/country_quiz/static/media/correct.a0805114.svg",
+    "static/media/incorrect.d653c612.svg": "/country_quiz/static/media/incorrect.d653c612.svg",
     "static/media/results.d76bfdf8.svg": "/country_quiz/static/media/results.d76bfdf8.svg",
     "static/media/traveler.182b6171.svg": "/country_quiz/static/media/traveler.182b6171.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.fd3770d3.js",
     "static/js/2.e69326dc.chunk.js",
-    "static/css/main.3fa4a3ae.chunk.css",
-    "static/js/main.d199e735.chunk.js"
+    "static/css/main.526fa896.chunk.css",
+    "static/js/main.93d7e193.chunk.js"
   ]
 }
