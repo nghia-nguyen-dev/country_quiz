@@ -74,7 +74,7 @@ const App = () => {
 		switch (state) {
 			case 1:
 			case 2:
-				return (
+				return currentQuestion.subject !== undefined ? (
 					<div className="card">
 						<div className="quiz">
 							<img className="quiz__traveler" src={traveler} />
@@ -105,6 +105,8 @@ const App = () => {
 							</button>
 						</div>
 					</div>
+				) : (
+					<p className="loading-txt">Loading...</p>
 				);
 
 			case 3:
@@ -133,7 +135,7 @@ const App = () => {
 				);
 		}
 	};
-
+	console.log(`rendered`);
 	return (
 		<div className="app">
 			<div className="container">
