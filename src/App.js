@@ -65,7 +65,7 @@ const App = () => {
 	};
 
 	const restart = () => {
-		setState(1);
+		setState(0);
 		setScore(0);
 		setCounter(config.questions);
 	};
