@@ -29,7 +29,6 @@ const App = () => {
 
 	useEffect(() => {
 		if (state === 1) {
-			// console.log(`fetching`);
 			fetch(buildQueryStr(getRandomCodes(config.options)))
 				.then((res) => res.json())
 				.then((data) => generateQuestion(data))
@@ -66,7 +65,7 @@ const App = () => {
 	};
 
 	const restart = () => {
-		setState(1);
+		setState(0);
 		setScore(0);
 		setCounter(config.questions);
 	};
