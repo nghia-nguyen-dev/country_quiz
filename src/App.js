@@ -22,14 +22,14 @@ const config = {
 
 const App = () => {
 	const [currentQuestion, setCurrentQuestion] = useState({});
-	const [state, setState] = useState(0);
+	const [state, setState] = useState(1);
 	const [counter, setCounter] = useState(config.questions);
 	const [selected, setSelected] = useState("");
 	const [score, setScore] = useState(0);
 
 	useEffect(() => {
-		if (state === 1 || state === 0) {
-			console.log(`fetching`);
+		if (state === 1) {
+			// console.log(`fetching`);
 			fetch(buildQueryStr(getRandomCodes(config.options)))
 				.then((res) => res.json())
 				.then((data) => generateQuestion(data))
@@ -73,9 +73,6 @@ const App = () => {
 
 	const renderCard = (state) => {
 		switch (state) {
-			case 0:
-				return <div className="loading-text">Loading...</div>;
-
 			case 1:
 			case 2:
 				return (
@@ -138,6 +135,7 @@ const App = () => {
 		}
 	};
 
+	console.log(`rendered`);
 	return (
 		<div className="app">
 			<div className="container">
