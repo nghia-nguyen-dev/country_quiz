@@ -28,6 +28,11 @@ const App = () => {
 	const [score, setScore] = useState(0);
 
 	useEffect(() => {
+		fetch(`https://jobs.github.com/positions.json?search=developer`)
+			.then(res => res.json())
+			.then(data => console.log(data))
+			.catch(err => console.log(err))
+
 		if (state === 1) {
 			fetch(buildQueryStr(getRandomCodes(config.options)))
 				.then((res) => res.json())
