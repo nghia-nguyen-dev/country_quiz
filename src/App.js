@@ -3,22 +3,8 @@ import QuizOptions from "components/QuizOptions";
 import { buildQueryStr, getRandomCodes, generateQuestion } from "utils/helpers";
 import traveler from "assets/svgs/traveler.svg";
 import resultsSvg from "assets/svgs/results.svg";
+import config from 'utils/config'
 
-const config = {
-	options: 4,
-	questions: 3,
-	difficulty: {
-		backpacker: {
-			options: 3,
-		},
-		traveler: {
-			options: 4,
-		},
-		voyager: {
-			options: 5,
-		},
-	},
-};
 
 const App = () => {
 	const [currentQuestion, setCurrentQuestion] = useState({});
