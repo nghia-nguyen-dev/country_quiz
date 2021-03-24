@@ -2,7 +2,7 @@ import Icon from "components/Icon";
 
 export default ({ currentQuestion, state, handleOptionClick, selected }) => {
 	const listItems = currentQuestion.options?.map((option, index) => {
-		const letters = ["A", "B", "C", "D"];
+		const letters = ["A", "B", "C", "D", "E"];
 
 		const markSelection = (function () {
 			if (state === 2) {

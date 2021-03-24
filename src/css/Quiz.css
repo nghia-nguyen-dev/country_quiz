@@ -1,4 +1,5 @@
-.quiz {
+.quiz,
+.Levels  {
 	width: 380px;
 }
 
@@ -7,7 +8,8 @@
 	width: 33%;
 }
 
-.quiz__question {
+.quiz__question,
+.Levels__title {
 	font-weight: bold;
 	font-size: 24px;
 	line-height: 36px;
@@ -20,7 +22,8 @@
 	margin-bottom: 42px;
 }
 
-.quiz-options__item {
+.quiz-options__item,
+.Levels__option {
 	color: rgba(96, 102, 208, 0.8);
 	padding: 14px 16px;
 	background: #fff;
@@ -38,7 +41,8 @@
 	margin-right: 24px;
 }
 
-.quiz-options__item:hover {
+.quiz-options__item:hover,
+.Levels__option:hover {
 	cursor: pointer;
 	color: #ffffff;
 	background: #f9a826;

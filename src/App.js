@@ -4,14 +4,15 @@ import { buildQueryStr, getRandomCodes, generateQuestion } from "utils/helpers";
 import traveler from "assets/svgs/traveler.svg";
 import resultsSvg from "assets/svgs/results.svg";
 import config from "utils/config";
+import Lvl from 'components/Lvl'
 
 const App = () => {
 	const [currentQuestion, setCurrentQuestion] = useState({});
-	const [state, setState] = useState(1);
+	const [state, setState] = useState(0);
 	const [counter, setCounter] = useState(config.questions);
 	const [selected, setSelected] = useState("");
 	const [score, setScore] = useState(0);
-	const [difficulty, setDifficulty] = useState(config.difficulty.backpacker)
+	const [difficulty, setDifficulty] = useState(config.difficulty.backpacker);
 
 	useEffect(() => {
 		if (state === 1) {
@@ -20,7 +21,6 @@ const App = () => {
 				.then((data) => generateQuestion(data))
 				.then((q) => {
 					setCurrentQuestion(q);
-					setState(1);
 				});
 		}
 	}, [state]);
@@ -51,13 +51,32 @@ const App = () => {
 	};
 
 	const restart = () => {
-		setState(1);
+		setState(0);
 		setScore(0);
 		setCounter(config.questions);
 	};
 
+	const handleSelection = (e) => {
+		setDifficulty(config.difficulty[e.target.innerText.toLowerCase()]);
+		setState(1);
+	};
+
 	const renderCard = (state) => {
 		switch (state) {
+			case 0:
+				return (
+					<div className="card">
+						<div className="Levels">
+							<h2 className="Levels__title">Select difficulty</h2>
+							<ul className="Levels__list">
+								<Lvl lvl="Backpacker" handleSelection={handleSelection}/>
+								<Lvl lvl="Traveler" handleSelection={handleSelection}/>
+								<Lvl lvl="Voyager" handleSelection={handleSelection}/>
+							</ul>
+						</div>
+					</div>
+				);
+
 			case 1:
 			case 2:
 				return currentQuestion.subject !== undefined ? (

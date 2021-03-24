@@ -1,5 +1,4 @@
 export default {
-	options: 4,
 	questions: 3,
 	difficulty: {
 		backpacker: 3,
