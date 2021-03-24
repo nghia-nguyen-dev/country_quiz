@@ -11,10 +11,11 @@ const App = () => {
 	const [counter, setCounter] = useState(config.questions);
 	const [selected, setSelected] = useState("");
 	const [score, setScore] = useState(0);
+	const [difficulty, setDifficulty] = useState(config.difficulty.backpacker)
 
 	useEffect(() => {
 		if (state === 1) {
-			fetch(buildQueryStr(getRandomCodes(config.options)))
+			fetch(buildQueryStr(getRandomCodes(difficulty)))
 				.then((res) => res.json())
 				.then((data) => generateQuestion(data))
 				.then((q) => {

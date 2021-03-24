@@ -2,14 +2,8 @@ export default {
 	options: 4,
 	questions: 3,
 	difficulty: {
-		backpacker: {
-			options: 3,
-		},
-		traveler: {
-			options: 4,
-		},
-		voyager: {
-			options: 5,
-		},
+		backpacker: 3,
+		traveler: 4,
+		voyager: 5,
 	},
 };
