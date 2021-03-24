@@ -3,8 +3,7 @@ import QuizOptions from "components/QuizOptions";
 import { buildQueryStr, getRandomCodes, generateQuestion } from "utils/helpers";
 import traveler from "assets/svgs/traveler.svg";
 import resultsSvg from "assets/svgs/results.svg";
-import config from 'utils/config'
-
+import config from "utils/config";
 
 const App = () => {
 	const [currentQuestion, setCurrentQuestion] = useState({});
@@ -14,7 +13,6 @@ const App = () => {
 	const [score, setScore] = useState(0);
 
 	useEffect(() => {
-	
 		if (state === 1) {
 			fetch(buildQueryStr(getRandomCodes(config.options)))
 				.then((res) => res.json())
