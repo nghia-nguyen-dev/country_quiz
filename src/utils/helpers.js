@@ -10,15 +10,7 @@ export const questions = [
 			options: countries.map((country) => country.name),
 		};
 	},
-	function (countries) {
-		const random = getRandomItem(countries);
-		return {
-			subject: "language",
-			question: `${random.languages[0].nativeName} is the native language of`,
-			answer: random.name,
-			options: countries.map((country) => country.name),
-		};
-	},
+
 	function (countries) {
 		const random = getRandomItem(countries);
 		return {
