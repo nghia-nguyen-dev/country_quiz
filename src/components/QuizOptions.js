@@ -3,6 +3,7 @@ import Icon from "components/Icon";
 export default ({ currentQuestion, state, handleOptionClick, selected }) => {
 	const listItems = currentQuestion.options?.map((option, index) => {
 		const letters = ["A", "B", "C", "D", "E"];
+		const { common } = option;
 
 		const markSelection = (function () {
 			if (state === 2) {
@@ -16,12 +17,12 @@ export default ({ currentQuestion, state, handleOptionClick, selected }) => {
 
 		return (
 			<li
-				key={option}
+				key={common}
 				onClick={() => handleOptionClick(option)}
 				className={`quiz-options__item ${markSelection}`}
 			>
 				<span>{letters[index]}</span>
-				{option}
+				{common}
 				<Icon
 					markSelection={markSelection}
 					className="quiz-options__icon"

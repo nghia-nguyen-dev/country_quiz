@@ -48,9 +48,9 @@ export const getRandomCodes = (number) => {
 
 // Append country codes to base url
 export const buildQueryStr = (listOfCodes) => {
-	const baseURL = `https://restcountries.eu/rest/v2/alpha?codes=`;
+	const baseURL = `https://restcountries.com/v3.1/alpha?codes=`;
 	return listOfCodes.reduce((accumulator, current) => {
-		return accumulator + `${current};`;
+		return accumulator + `${current},`;
 	}, baseURL);
 };
 
