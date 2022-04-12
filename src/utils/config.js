@@ -1,4 +1,4 @@
-export default {
+const config = {
 	questions: 3,
 	difficulty: {
 		backpacker: 3,
@@ -6,3 +6,5 @@ export default {
 		voyager: 5,
 	},
 };
+
+export default config;

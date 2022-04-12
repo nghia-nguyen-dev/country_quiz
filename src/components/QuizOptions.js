@@ -1,6 +1,6 @@
 import Icon from "components/Icon";
 
-export default ({ currentQuestion, state, handleOptionClick, selected }) => {
+const QuizOptions = ({ currentQuestion, state, handleOptionClick, selected }) => {
 	const listItems = currentQuestion.options?.map((option, index) => {
 		const letters = ["A", "B", "C", "D", "E"];
 		const { common } = option;
@@ -33,3 +33,5 @@ export default ({ currentQuestion, state, handleOptionClick, selected }) => {
 
 	return <ul className="quiz-options">{listItems}</ul>;
 };
+
+export default QuizOptions;

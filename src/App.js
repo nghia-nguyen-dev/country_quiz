@@ -14,8 +14,6 @@ const App = () => {
 	const [score, setScore] = useState(0);
 	const [difficulty, setDifficulty] = useState(config.difficulty.backpacker);
 
-	console.log({currentQuestion})
-
 	useEffect(() => {
 		if (state === 1) {
 			fetch(buildQueryStr(getRandomCodes(difficulty)))
@@ -85,11 +83,12 @@ const App = () => {
 				return currentQuestion.subject !== undefined ? (
 					<div className="card">
 						<div className="quiz">
-							<img className="quiz__traveler" src={traveler} />
+							<img className="quiz__traveler" src={traveler} alt="a traveler standing next to world globe"/>
 							{currentQuestion.subject === "flag" ? (
 								<img
 									className="quiz__flag"
 									src={"https://restcountries.com/data/png/per.png"}
+									alt="country flag"
 								/>
 							) : null}
 							<h2 className="quiz__question">
@@ -121,7 +120,7 @@ const App = () => {
 				return (
 					<div className="card">
 						<div className="results">
-							<img src={resultsSvg} />
+							<img src={resultsSvg} alt="two people celebrating with a trophy"/>
 							<div className="results__content">
 								<h2>Results</h2>
 								<p>
