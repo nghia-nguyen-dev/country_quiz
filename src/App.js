@@ -87,8 +87,8 @@ const App = () => {
 							{currentQuestion.subject === "flag" ? (
 								<img
 									className="quiz__flag"
-									src={"https://restcountries.com/data/png/per.png"}
-									alt="country flag"
+									src={currentQuestion.imgSrc}
+									alt={`country flag of ${currentQuestion.answer.common}`}
 								/>
 							) : null}
 							<h2 className="quiz__question">

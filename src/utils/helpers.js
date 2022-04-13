@@ -18,7 +18,7 @@ export const questions = [
 			question: `This is the flag of`,
 			answer: random.name,
 			options: countries.map((country) => country.name),
-			imgSrc: random.flag,
+			imgSrc: random.flags.png,
 		};
 	},
 ];
